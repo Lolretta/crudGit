@@ -16,13 +16,13 @@ if(isset($_POST['update']))
 {	
 	$id = $_POST['id'];
 	$name = input($_POST["name"]);
-	$username = input($_POST["username"]);
-	$email = input($_POST["email"]);
+	$code = input($_POST["code"]);
+	$career = input($_POST["career"]);
 	$phone = input($_POST["phone"]);
-	$jobs = input($_POST["jobs"]);
+	$credits = input($_POST["credits"]);
 		
 	// update user data
-	$result = mysqli_query($conn, "UPDATE users SET name='$name',username='$username',email='$email',phone='$phone',jobs='$jobs' WHERE id='$id'");
+	$result = mysqli_query($conn, "UPDATE iest SET name='$name',code='$code',career='$career',phone='$phone',credits='$credits' WHERE id='$id'");
 	
 	// Redirect to homepage to display updated user in list
 	header("Location: index.php");
@@ -34,7 +34,7 @@ if(isset($_POST['update']))
 $id = $_GET['id'];
  
 // Fetech user data based on id
-$result = mysqli_query($mysqli, "SELECT * FROM users WHERE id=$id");
+$result = mysqli_query($mysqli, "SELECT * FROM iest WHERE id=$id");
  
 while($user_data = mysqli_fetch_array($result))
 {

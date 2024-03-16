@@ -35,14 +35,14 @@
 
         $id = $_GET['id'];
         $name = input($_POST["name"]);
-        $username = input($_POST["username"]);
-        $email = input($_POST["email"]);
+        $code = input($_POST["code"]);
+        $career = input($_POST["career"]);
         $phone = input($_POST["phone"]);
-        $jobs = input($_POST["jobs"]);
+        $credits = input($_POST["jobs"]);
 
         //Query input menginput data kedalam tabel anggota
-        $create = "insert into users (name,username,email,phone,jobs) values
-		('$name','$username','$email','$phone','$jobs')";
+        $create = "insert into iest (name,code,career,phone,credits) values
+		('$name','$code','$career','$phone','$credits')";
 
         //Mengeksekusi/menjalankan query diatas
         $result = mysqli_query($conn, $create);
@@ -82,20 +82,20 @@
                                                         <input type="text" class="form-control" id="user-name" name="name" required>
                                                     </div>
                                                     <div class="form-group mb-2">
-                                                        <label for="recipient-name" class="col-form-label">Username:</label>
-                                                        <input type="text" class="form-control" id="user-name" name="username" required>
+                                                        <label for="recipient-name" class="col-form-label">Code:</label>
+                                                        <input type="text" class="form-control" id="user-code" name="code" required>
                                                     </div>
                                                     <div class="form-group mb-2">
-                                                        <label for="recipient-name" class="col-form-label">Email:</label>
-                                                        <input type="text" class="form-control" id="user-email" name="email" required>
+                                                        <label for="recipient-name" class="col-form-label">Career:</label>
+                                                        <input type="text" class="form-control" id="user-career" name="career" required>
                                                     </div>
                                                     <div class="form-group mb-2">
                                                         <label for="recipient-name" class="col-form-label">Number Phone:</label>
                                                         <input type="text" class="form-control" id="user-phone" name="phone" required>
                                                     </div>
                                                     <div class="form-group mb-2">
-                                                        <label for="recipient-name" class="col-form-label">Jobs:</label>
-                                                        <input type="text" class="form-control" id="user-jobs" name="jobs" required>
+                                                        <label for="recipient-name" class="col-form-label">Credits:</label>
+                                                        <input type="text" class="form-control" id="user-credits" name="credits" required>
                                                     </div>
                                                     <button type="button" class="btn btn-secondary text-right" data-dismiss="modal">Close</button>
                                                     <button type="submit" name="submit" class="btn btn-success">Submit</button>
@@ -122,20 +122,20 @@
                                             <input type="text" class="form-control" id="user-name" name="name" required>
                                         </div>
                                         <div class="form-group mb-2">
-                                            <label for="user-username" class="col-form-label">Username:</label>
-                                            <input type="text" class="form-control" id="user-username" name="username" required>
+                                            <label for="user-code" class="col-form-label">Code:</label>
+                                            <input type="text" class="form-control" id="user-code" name="code" required>
                                         </div>
                                         <div class="form-group mb-2">
-                                            <label for="user-emai" class="col-form-label">Email:</label>
-                                            <input type="text" class="form-control" id="user-email" name="email" required>
+                                            <label for="user-career" class="col-form-label">Career:</label>
+                                            <input type="text" class="form-control" id="user-career" name="career" required>
                                         </div>
                                         <div class="form-group mb-2">
                                             <label for="user-phone" class="col-form-label">Number Phone:</label>
                                             <input type="text" class="form-control" id="user-phone" name="phone" required>
                                         </div>
                                         <div class="form-group mb-2">
-                                            <label for="user-jobs" class="col-form-label">Jobs:</label>
-                                            <input type="text" class="form-control" id="user-jobs" name="jobs" required>
+                                            <label for="user-credits" class="col-form-label">Credits:</label>
+                                            <input type="text" class="form-control" id="user-credits" name="credits" required>
                                         </div>
                                         <input type="hidden" name="id" value="<?php echo $user_data['id']; ?>" />
                                         <button type="button" class="btn btn-secondary text-right" data-dismiss="modal">Close</button>
@@ -151,10 +151,10 @@
                                 <tr>
                                     <th scope="col">ID</th>
                                     <th scope="col">Name</th>
-                                    <th scope="col">Username</th>
-                                    <th scope="col">Email</th>
+                                    <th scope="col">Code</th>
+                                    <th scope="col">Career</th>
                                     <th scope="col">Phone</th>
-                                    <th scope="col">Jobs</th>
+                                    <th scope="col">Credits</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
@@ -162,17 +162,17 @@
                                 <?php
                                 include_once("config.php");
 
-                                $result = mysqli_query($conn, "SELECT * FROM users ORDER BY id DESC");
+                                $result = mysqli_query($conn, "SELECT * FROM iest ORDER BY id DESC");
                                 ?>
                                 <?php
                                 while ($user_data = mysqli_fetch_array($result)) {
                                     echo "<tr>";
                                     echo "<td>" . $user_data['id'] . "</td>";
                                     echo "<td>" . $user_data['name'] . "</td>";
-                                    echo "<td>" . $user_data['username'] . "</td>";
-                                    echo "<td>" . $user_data['email'] . "</td>";
+                                    echo "<td>" . $user_data['code'] . "</td>";
+                                    echo "<td>" . $user_data['career'] . "</td>";
                                     echo "<td>" . $user_data['phone'] . "</td>";
-                                    echo "<td>" . $user_data['jobs'] . "</td>";
+                                    echo "<td>" . $user_data['credits'] . "</td>";
                                     echo "<td><button type='button' class='btn btn-success' data-toggle='modal' data-target='#updateModal' data-whatever='@fat'>Update</button>
                                     <a href='delete.php?id=$user_data[id]'><button type='button' class='btn btn-danger'>Delete</button></a></td></tr>"; 
                                 }
